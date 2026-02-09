@@ -1,0 +1,2 @@
+I am creating a file using python 
+The file will be checked in folder 
