@@ -1,7 +1,7 @@
 import re
 count = 0
 # Proper IP regex pattern
-ip_pattern = r"\b\d{1,3}(?:\.\d{1,3}){3}\b"
+ip_pattern = r"\b\d+\.\d+\.\d+\.\d+\b"
 with open("auth.log", "r") as file:
     for line in file:
         if "from" in line:
