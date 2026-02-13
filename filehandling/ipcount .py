@@ -1,4 +1,4 @@
-with open("auth.log", "r") as file:
+with open("auth_1.log", "r") as file:
     count = 0
     for line in file:       
         if "from" in line:
