@@ -16,3 +16,5 @@ for port in range(start_port, end_port):
         print(f"Port number {port} is CLOSED")
 
     s.close()
+    
+    #000000#000000#000000
