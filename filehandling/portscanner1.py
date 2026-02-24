@@ -11,10 +11,9 @@ for port in range(start_port, end_port):
     result = s.connect_ex((target, port))
 
     if result == 0:
-        print(f"Port number {port} is OPEN")
+		print(f"Port number {port} is OPEN")
     else:
         print(f"Port number {port} is CLOSED")
 
     s.close()
     
-    #000000#000000#000000
