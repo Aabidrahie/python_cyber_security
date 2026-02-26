@@ -6,7 +6,7 @@ port = int(input("Enter target port: "))
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(3)
-
+    
     if s.connect_ex((target, port)) == 0:
         print(f"\n[+] Connected to {target}:{port}")
 
@@ -18,7 +18,6 @@ try:
         print(banner.decode(errors="ignore"))
     else:
         print("[-] Port closed or filtered.")
-
     s.close()
 
 except Exception as e:
