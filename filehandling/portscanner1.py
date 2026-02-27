@@ -12,7 +12,7 @@ for port in range(start_port, end_port + 1):
 	
 	if result == 0:
 		print(f"Port Number {port} is OPEN")
-	#else:
-		#print(f"Port Number {port} is CLOSED")
+	else:
+		print(f"Port Number {port} is CLOSED")
 	s.close()
 print("Port scanning done")
