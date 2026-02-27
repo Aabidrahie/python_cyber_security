@@ -1,0 +1,46 @@
+import socket
+
+target = input("Enter the target IP: ")
+start_port = int(input("Enter the starting port: "))
+end_port = int(input("Enter the ending port: "))
+
+print(f"\nScanning {target} from port {start_port} to {end_port}...\n")
+
+for port in range(start_port, end_port + 1):
+
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(2)
+
+        result = s.connect_ex((target, port))
+
+        if result == 0:
+            print(f"[+] Port {port} is OPEN")
+
+            try:
+                # Try to receive banner directly (works for FTP, SSH, SMTP etc.)
+                banner = s.recv(1024)
+
+                if banner:
+                    print(f"    Banner: {banner.decode(errors='ignore').strip()}")
+
+                else:
+                    # If no automatic banner, try HTTP request
+                    s.send(b"HEAD / HTTP/1.1\r\nHost: test\r\n\r\n")
+                    banner = s.recv(1024)
+
+                    if banner:
+                        print(f"    Response: {banner.decode(errors='ignore').strip()}")
+
+            except:
+                print("    No banner received.")
+
+        else:
+            print(f"[-] Port {port} is CLOSED")
+
+        s.close()
+
+    except Exception as e:
+        print(f"Error scanning port {port}: {e}")
+
+print("\nPort scanning and banner grabbing completed.")
