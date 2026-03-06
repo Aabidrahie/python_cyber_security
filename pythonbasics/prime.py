@@ -1,3 +1,7 @@
+
+
+
+
 def prime():
     n = int(input("Enter a number:  "))
     if n < 2:
@@ -7,6 +11,6 @@ def prime():
         if n % i == 0:
             print(n,"is not a prime")
             break
-    else:
-        print(n,"is prime")
+        else:
+            print(n,"is prime")
 prime()

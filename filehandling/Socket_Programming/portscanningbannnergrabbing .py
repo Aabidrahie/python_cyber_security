@@ -18,22 +18,26 @@ for port in range(start_port, end_port + 1):
             print(f"[+] Port {port} is OPEN")
 
             try:
-                # Try to receive banner directly (works for FTP, SSH, SMTP etc.)
+                # First try receiving automatic banner
                 banner = s.recv(1024)
 
                 if banner:
                     print(f"    Banner: {banner.decode(errors='ignore').strip()}")
 
                 else:
-                    # If no automatic banner, try HTTP request
-                    s.send(b"HEAD / HTTP/1.1\r\nHost: test\r\n\r\n")
+                    # Try HTTP request if no banner
+                    request = f"HEAD / HTTP/1.1\r\nHost: {target}\r\n\r\n"
+                    s.send(request.encode())
+
                     banner = s.recv(1024)
 
                     if banner:
                         print(f"    Response: {banner.decode(errors='ignore').strip()}")
+                    else:
+                        print("No banner received.")
 
             except:
-                print("    No banner received.")
+                print("No banner received.")
 
         else:
             print(f"[-] Port {port} is CLOSED")
