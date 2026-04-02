@@ -4,19 +4,18 @@ import urllib.parse
 url = "https://httpbin.org/post"
 
 data = {
-	"username":"admin",
-	"password":"12345"
-
+		"username":"admin",
+			"password":"12345"
 	}
 	
 encoded_data = urllib.parse.urlencode(data).encode()
 
 headers = {
-	"User-Agent":"Mozila/5.0"
-	}
-	
-req = urllib.request.Request(url, data=b"Test",headers=headers)
+			"User-Agent":"Mozila/5.0"
+			}
 
-response = urllib.request.urlopen(req)
+request = urllib.request.Request(url,data=encoded_data,headers=headers)
+
+response = urllib.request.urlopen(request)
 
 print(response.read().decode())
