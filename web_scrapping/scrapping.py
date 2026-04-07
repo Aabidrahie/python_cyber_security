@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://httpbin.org/html"
+url = "https://books.toscrape.com"
 
 # Step 1: Send request with headers (important for avoiding blocks)
 headers = {
